@@ -2,12 +2,23 @@
 
 <h1>Product list</h1>
 
-@foreach (var product in Model)
-{
-    <div>
-        <p>Product ID: @product.Id</p>
-        <p>Product name: @product.Name</p>
-        <p>Product price: @product.Price</p>
-        <hr />
-    </div>
-}
+<table class="table table-striped table-bordered">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Price</th>
+        </tr>
+    </thead>
+
+    <body>
+        @foreach (var product in Model)
+            {
+                <tr>
+                    <td>@product.Id</td>
+                    <td>@product.Name</td>
+                    <td>@product.Price</td>
+                </tr>
+            }
+        </body>
+</table>
