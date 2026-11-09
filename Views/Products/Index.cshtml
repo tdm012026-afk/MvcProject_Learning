@@ -1,7 +1,13 @@
-@model Product
+@model List<Product>
 
-<h1>Product details</h1>
+<h1>Product list</h1>
 
-<p>Product ID: @Model.Id</p>
-<p>Product name: @Model.Name</p>
-<p>Product price: @Model.Price</p>
+@foreach (var product in Model)
+{
+    <div>
+        <p>Product ID: @product.Id</p>
+        <p>Product name: @product.Name</p>
+        <p>Product price: @product.Price</p>
+        <hr />
+    </div>
+}

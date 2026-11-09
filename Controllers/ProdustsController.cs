@@ -7,13 +7,28 @@ public class ProductsController : Controller
 {
     public IActionResult Index()
     {
-        Product product = new Product
+        List<Product> products = new List<Product>
         {
-            Id = 1,
-            Name = "Laptop",
-            Price = 3500m,
+            new Product
+            {
+                Id = 1,
+                Name = "Laptop",
+                Price = 7500m,
+            },
+            new Product
+            {
+                Id = 2,
+                Name = "Keyboard",
+                Price = 250m
+            },
+            new Product
+            {
+                Id = 3,
+                Name = "Mouse",
+                Price = 150m,
+            },
         };
         
-        return View(product);
+        return View(products);
     }
 }
