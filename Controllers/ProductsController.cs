@@ -18,4 +18,19 @@ public class ProductsController : Controller
 
         return View(products);
     }
+    public IActionResult Create()
+    {
+        return View();
+    }
+    [HttpPost]
+    public IActionResult Create(Product product)
+    {
+        if (!ModelState.IsValid)
+        {
+            return View(product);
+        }
+        _repository.Add(product);
+
+        return RedirectToAction("Index");
+    }
 }
