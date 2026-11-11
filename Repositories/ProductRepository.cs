@@ -2,7 +2,7 @@ using MvcLearningProject.Models;
 
 namespace MvcLearningProject.Repositories;
 
-public class ProductRepository
+public class ProductRepository : IProductRepository
 {
     public List<Product> GetAll()
     {

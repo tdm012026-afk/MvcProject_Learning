@@ -6,11 +6,15 @@ namespace MvcLearningProject.Controllers;
 
 public class ProductsController : Controller
 {
+    private readonly IProductRepository _repository;
+
+    public ProductsController(IProductRepository repository)
+    {
+        _repository = repository;
+    }
     public IActionResult Index()
     {
-        ProductRepository repository = new ProductRepository();
-
-        List<Product> products = repository.GetAll();
+        List<Product> products = _repository.GetAll();
 
         return View(products);
     }
