@@ -50,4 +50,14 @@ public class ProductRepository : IProductRepository
         existingProduct.Name = product.Name;
         existingProduct.Price = product.Price;
     }
+    public void Delete(int id)
+    {
+        var product = GetById( id);
+
+        if (product == null)
+        {
+            return;
+        }
+        _products.Remove(product);
+    }
 }

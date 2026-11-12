@@ -53,4 +53,12 @@ public class ProductsController : Controller
         _repository.Update(product);
         return RedirectToAction("Index");   //RedirectToAction - redirects user to lits of products
     }
+    [HttpPost]
+    public IActionResult Delete(int id)
+    {
+        _repository.Delete(id);
+
+        return RedirectToAction("Index");   // RedirectToAction - returns to list of products 
+    }
+
 }
