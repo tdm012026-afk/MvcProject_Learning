@@ -29,10 +29,25 @@ public class ProductRepository : IProductRepository
     {
         return _products;
     }
+    public Product? GetById(int id)
+    {
+        return _products.FirstOrDefault(p => p.Id == id);
+    }
     public void Add(Product product)
     {
         product.Id = _products.Max(p => p.Id) +1;
         
         _products.Add(product);
+    }
+    public void Update(Product product)
+    {
+        var existingProduct = GetById(product.Id);
+
+        if (existingProduct == null)
+        {
+            return; 
+        }
+        existingProduct.Name = product.Name;
+        existingProduct.Price = product.Price;
     }
 }

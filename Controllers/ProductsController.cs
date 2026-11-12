@@ -33,4 +33,24 @@ public class ProductsController : Controller
 
         return RedirectToAction("Index");
     }
+    public IActionResult Edit(int id)
+    {
+        var product = _repository.GetById(id);
+
+        if (product == null)
+        {
+            return NotFound();
+        }
+        return View(product);
+    }
+    [HttpPost]
+    public IActionResult Edit(Product product)
+    {
+        if (!ModelState.IsValid)         //!ModelState.IsVAlid - checking if data are correct
+        {
+            return View(product);
+        }
+        _repository.Update(product);
+        return RedirectToAction("Index");   //RedirectToAction - redirects user to lits of products
+    }
 }
