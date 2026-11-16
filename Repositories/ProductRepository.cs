@@ -35,8 +35,15 @@ public class ProductRepository : IProductRepository
     }
     public void Add(Product product)
     {
-        product.Id = _products.Max(p => p.Id) +1;
-        
+       if (!_products.Any())
+        {
+            product.Id = 1;
+        }
+        else
+        {
+            product.Id = _products.Max(p => p.Id) +1;
+        }
+            
         _products.Add(product);
     }
     public void Update(Product product)
