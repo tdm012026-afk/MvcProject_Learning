@@ -4,6 +4,10 @@
     <TargetFramework>net10.0</TargetFramework>
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
+    <DefaultItemExcludes>$(DefaultItemExcludes);MvcLearningProject.Tests/**</DefaultItemExcludes>
   </PropertyGroup>
+    <ItemGroup>
+    <Compile Remove="MvcLearningProject.Tests/**/*.cs" />
+    </ItemGroup>
 
 </Project>
