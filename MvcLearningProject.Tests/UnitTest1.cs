@@ -1,7 +1,9 @@
-﻿using Xunit;
+﻿using MvcLearningProject.Models;
+using Xunit;
 using MvcLearningProject.Repositories;
 using System.Data.Common;
 using System.Reflection;
+using System.Net.Http.Headers;
 namespace MvcLearningProject.Tests;
 
 public class UnitTest1
@@ -43,5 +45,23 @@ public class UnitTest1
 
         //Assert        
         Assert.Null(product);       //checking if variable is null
+    }
+    [Fact]
+    public void Add_NewProduct()
+    {
+        // Arrange
+        var productRepository = new ProductRepository();
+        var product = new Product
+        {
+            Name = "Monitor",
+            Price = 1200m
+        };
+        //Act 
+        productRepository.Add(product);
+       
+       //Assert
+       var products = productRepository.GetAll();
+       Assert.Equal(4, products.Count);
+
     }
 }
