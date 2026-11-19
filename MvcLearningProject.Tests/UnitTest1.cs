@@ -78,9 +78,25 @@ public class UnitTest1
 
         //Assert
         var updatedProduct = productRepository.GetById(1);
-        
+
         Assert.NotNull(updatedProduct);
         Assert.Equal(8000m, updatedProduct.Price);
     
+    }
+    [Fact]
+    public void Delete_ExistingProduct()
+    {
+        //Arrange
+        var productRepository = new ProductRepository();
+        var product = productRepository.GetById(1);
+
+        //Act
+        productRepository.Delete(1);
+
+        //Assert
+        var deletedProduct = productRepository.GetById(1);
+
+        Assert.Null(deletedProduct);
+        
     }
 }
