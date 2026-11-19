@@ -62,6 +62,25 @@ public class UnitTest1
        //Assert
        var products = productRepository.GetAll();
        Assert.Equal(4, products.Count);
+    }
+    [Fact]
+    public void Update_ExistingProduct()
+    {
+        //Arrange
+        var productRepository = new ProductRepository();
+        var product = productRepository.GetById(1);
+        Assert.NotNull(product);
+        product.Price = 8000m;
+        product.Name = "Updated Laptop";
+        
+        // Act
+        productRepository.Update(product);
 
+        //Assert
+        var updatedProduct = productRepository.GetById(1);
+        
+        Assert.NotNull(updatedProduct);
+        Assert.Equal(8000m, updatedProduct.Price);
+    
     }
 }
